@@ -52,4 +52,9 @@ where dep.name like 'Dipartimento di matematica';
  * EX JOIN BONUS
  */
 
-#selezionare per ogni studente quanti tentativi d'esame ha sostenuto per superare ciascuno dei suoi esami
+select count(*) as 'n_appelli', s.name, s.surname, c.name 
+from students s
+join exam_student es on es.student_id = s.id 
+join exams e on e.id = es.exam_id 
+join courses c on c.id = e.course_id 
+group by s.name, s.surname, c.name ;
